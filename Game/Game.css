@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #fefefe;
+  }
+  
+  h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(4, 80px);
+    gap: 10px;
+    border: 3px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: fit-content;
+    margin: 30px auto;
+  }
+  
+
+  
+  .card {
+    background-color: #f2f2f2;
+    border: 2px solid #444;
+    border-radius: 10px;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .card.flipped{
+    background-color: #fffacd;
+    transform: rotateY(180deg);
+  }
+
+  .card.matched {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #fdfdfd,
+      #fdfdfd 2px,
+      #f2f2f2 2px,
+      #f2f2f2 4px
+    );
+    border: none;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+    opacity: 1;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 2px solid #444;
+  }
+  
+  .card.flipped::before {
+    background-color: #fff;
+  }
+  
+  .card::after {
+    content: attr(data-emoji);
+    position: absolute;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+  }
+  
+  
+  #play-again {
+    display: none;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  #play-again:hover {
+    background-color: #ffcc00;
+  }
+  
+  #play-again:hover {
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 600px) {
+    #game-board {
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 8px;
+    }
+  
+    .card {
+      font-size: 1.5rem;
+    }
+  
+    #play-again {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .card {
+      font-size: 1.2rem;
+    }
+  }
+  
